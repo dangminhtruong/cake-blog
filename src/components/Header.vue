@@ -1,12 +1,16 @@
 <template>
-    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-        <el-menu-item index="1">Home</el-menu-item>
-        <el-submenu index="2">
-            <template slot="title">Workspace</template>
-            <el-menu-item index="2-1">Category I</el-menu-item>
-            <el-menu-item index="2-2">Category II</el-menu-item>
-            <el-menu-item index="2-3">Category III</el-menu-item>
-        </el-submenu>
-        <el-menu-item index="4">About</el-menu-item>
-    </el-menu>
+    <div class="menu" id="fixed_header">
+        <div class="menu_logo">
+            <img src="@/assets/logo-2.png" />
+        </div>
+        <ul class="menu_list">
+            <li><a>Home</a></li>
+            <li><a>Category</a></li>
+            <li><a>Editor's choise</a></li>
+            <li><a>About Me</a></li>
+        </ul>
+        <div class="menu_search">
+            <i class="fas fa-search"></i>
+        </div>
+    </div>
 </template>
