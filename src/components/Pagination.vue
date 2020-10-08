@@ -1,14 +1,15 @@
 <template>
     <div class="main">
         <div class="pagination">
-            <div class="pagination_item" 
+            <a class="pagination_item" 
+                href="#header"
                 v-for="item in maxPages" 
                 :key="`pagin${item}`"
                 :class="{ 'pagination_active': item == currentpage }"
                 @click="goToPage(item)"
             >
                 {{ item }}
-            </div>
+            </a>
         </div>
     </div>
 </template>

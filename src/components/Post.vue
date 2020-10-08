@@ -15,21 +15,45 @@
                     </p>
                 </div>
             </div>
-            <div class="main_post_background" v-bind:style="{ backgroundImage: 'url(' + post.avatar + ')' }"></div>
+            <div class="main_post_background" 
+                v-bind:style="{ backgroundImage: `url(${post.avatar})` }"
+            >
+                <div class="action">
+                    <div class="action-item" @click="$emit('open-add')">
+                        <i class="el-icon-plus"></i>
+                    </div>
+                    <el-popconfirm 
+                        title="Are you sure to delete this post?" 
+                        confirmButtonText='OK'
+                        cancelButtonText='No, Thanks'
+                        icon="el-icon-info"
+                        iconColor="red"
+                        @onConfirm="deletePost"
+                    >
+                        <div slot="reference" class="action-item">
+                            <i class="el-icon-delete"></i>
+                        </div>
+                    </el-popconfirm>
+                    
+                    <div class="action-item">
+                        <i class="el-icon-edit"></i>
+                    </div>
+                </div>
+            </div>
             <div class="main_post_body">
-            <p>{{ post.description }}</p>
+                <p>{{ post.description }}</p>
             </div>
             <div class="main_post_footer">
             <div class="main_post_footer_wrapper">
                 <a href="#">
-                <span></span>
-                Read More
+                    <span></span>
+                    Read More
                 </a>
                 <ul class="main_post_footer_wrapper_share">
-                <li class="should_bold">Share</li>
-                <li><i class="fab fa-facebook-square"></i></li>
-                <li><i class="fab fa-linkedin"></i></li>
-                <li><i class="fab fa-twitter-square"></i></li>
+                    <li class="should_bold">Share</li>
+                    <li><i class="fab fa-facebook-square"></i></li>
+                    <li><i class="fab fa-linkedin"></i></li>
+                    <li><i class="fab fa-twitter-square"></i></li>
                 </ul>
             </div>
             </div>
@@ -39,6 +63,11 @@
 
 <script>
 export default {
-    props: ['post'],
+    props: ['post', 'open-add'],
+    methods: {
+        deletePost(){
+            this.$store.dispatch('home/deletePost', this.post.id);
+        }
+    }
 }
 </script>

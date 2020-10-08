@@ -1,5 +1,5 @@
 <template>
-    <div class="menu" id="fixed_header">
+    <div class="menu" id="header">
         <div class="menu_logo">
             <img src="@/assets/logo-2.png" />
         </div>
