@@ -15,4 +15,7 @@ instance.interceptors.response.use(response => {
     return response
 });
 
+axios.defaults.withCredentials = true
+axios.defaults.crossDomain = true;
+
 export default instance

@@ -119,7 +119,7 @@ export default {
                     })
                     this.resetAll()
                 }
-            });
+            })
         },
         resetAll(){
             this.title = null

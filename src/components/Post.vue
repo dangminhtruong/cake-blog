@@ -7,11 +7,9 @@
                     <span>Nov</span>
                 </div>
                 <div class="entry_group">
-                    <h2 class="entry_group_title">
-                    <a href="#">{{ post.title }}</a>
-                    </h2>
+                    <PostTitle :post="post"/>
                     <p class="entry_group_meta">
-                    By <span>Truong Dang</span> in<a> #Laravel</a>
+                        By <span>Truong Dang</span> in<a> #Laravel</a>
                     </p>
                 </div>
             </div>
@@ -62,8 +60,11 @@
 </template>
 
 <script>
+import PostTitle from '@/components/PostTitle.vue'
+
 export default {
     props: ['post', 'open-add'],
+    components: {PostTitle},
     methods: {
         deletePost(){
             this.$store.dispatch('home/deletePost', this.post.id);

@@ -41,6 +41,16 @@ const actions = {
         }catch(e){
             message('Unable to add this posts.', 'error')
         }
+    },
+
+    async updatePost({commit}, {id, form}){
+        try{
+            const {data} = await addPostApi(id, form)
+            commit('UPDATE_POST', {data: data})
+            message('Update post successfully.', 'success')
+        }catch(e){
+            message('Unable to add this posts.', 'error')
+        }
     }
 }
 

@@ -3,18 +3,15 @@
         <Top/>
         <Header/>
         <div v-for="(item, index) in posts" :key="`post${index}`"> 
-            <Post 
-                :post="item.Post"
+            <Post :post="item.Post"
                 @open-add="isOpenAdd = true"
             />
         </div>
-        <Pagination 
-            :maxPages="pagination.maxPages"
+        <Pagination :maxPages="pagination.maxPages"
             :currentpage="pagination.currentPage"
         />
         <Footer />
-        <Add 
-            :isOpenAdd="isOpenAdd"
+        <Add :isOpenAdd="isOpenAdd"
             @open-add="isOpenAdd = true"
             @close-add="isOpenAdd = false"
         />
