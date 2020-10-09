@@ -8,7 +8,7 @@
                 <el-input
                     placeholder="Enter post title"
                     v-model="title"
-                    @blur="isEdit = false"
+                    @blur="onSubmit"
                     ref="titleInput"
                     @keyup.enter.native="onSubmit"
                 >
@@ -57,7 +57,7 @@ export default {
                             content: this.title
                         }
                     });
-
+                    this.isEdit = false
                     this.$refs.titleInput.blur()
                 }
             });
