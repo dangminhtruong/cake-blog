@@ -32,10 +32,17 @@
                             <i class="el-icon-delete"></i>
                         </div>
                     </el-popconfirm>
-                    
-                    <div class="action-item">
-                        <i class="el-icon-edit"></i>
-                    </div>
+
+                    <el-popover
+                        placement="bottom"
+                        title="Edit Image"
+                        trigger="click"
+                    >
+                        <EditAvatar :post="post"/>
+                        <div class="action-item" slot="reference">
+                            <i class="el-icon-picture-outline"></i>
+                        </div>
+                    </el-popover>
                 </div>
             </div>
             <Description :post="post"/>
@@ -60,10 +67,11 @@
 <script>
 import PostTitle from '@/components/PostTitle.vue'
 import Description from '@/components/Description.vue'
+import EditAvatar from '@/components/EditAvatar.vue'
 
 export default {
     props: ['post', 'open-add'],
-    components: {PostTitle, Description},
+    components: {PostTitle, Description, EditAvatar},
     methods: {
         deletePost(){
             this.$store.dispatch('home/deletePost', this.post.id);
