@@ -38,9 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="main_post_body">
-                <p>{{ post.description }}</p>
-            </div>
+            <Description :post="post"/>
             <div class="main_post_footer">
             <div class="main_post_footer_wrapper">
                 <a href="#">
@@ -61,10 +59,11 @@
 
 <script>
 import PostTitle from '@/components/PostTitle.vue'
+import Description from '@/components/Description.vue'
 
 export default {
     props: ['post', 'open-add'],
-    components: {PostTitle},
+    components: {PostTitle, Description},
     methods: {
         deletePost(){
             this.$store.dispatch('home/deletePost', this.post.id);

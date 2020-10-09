@@ -1,4 +1,4 @@
-import {getPostsApi, deletePostApi, addPostApi} from '@/api'
+import {getPostsApi, deletePostApi, addPostApi, updatePostApi} from '@/api'
 import { message } from '@/utils/message.js';
 
 const state = {
@@ -45,8 +45,8 @@ const actions = {
 
     async updatePost({commit}, {id, form}){
         try{
-            const {data} = await addPostApi(id, form)
-            commit('UPDATE_POST', {data: data})
+            await updatePostApi(id, form)
+            commit('UPDATE_POST', {id, form})
             message('Update post successfully.', 'success')
         }catch(e){
             message('Unable to add this posts.', 'error')
@@ -71,6 +71,23 @@ const mutations = {
         const index = state.posts.findIndex(item => item.Post.id == id)
         state.posts.splice(index, 1)
     },
+
+    UPDATE_POST(state, {id, form}){
+        const index = state.posts.findIndex(item => item.Post.id == id)
+        const {type, content} = form
+
+        switch(type){
+            case 'title':
+                state.posts[index].Post.title = content
+                break;
+            case 'avatar': 
+                state.posts[index].Post.avatar = content
+                break;
+            case 'description':
+                state.posts[index].Post.description = content
+                break;
+        }
+    }
 }
 
 export default {

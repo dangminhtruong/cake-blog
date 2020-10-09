@@ -50,7 +50,15 @@ export default {
         async onSubmit(){
             await this.$refs.editTitle.validate().then(success => {
                 if (success) {
-                    console.log(this.title)
+                    this.$store.dispatch('home/updatePost', {
+                        id: this.post.id,
+                        form: {
+                            type: 'title',
+                            content: this.title
+                        }
+                    });
+
+                    this.$refs.titleInput.blur()
                 }
             });
         }
