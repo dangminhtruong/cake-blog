@@ -64,6 +64,11 @@ export default {
                 this.$refs.descriptionInput.focus()
             })
         },
-    }
+    },
+    watch: {
+        post: function (post) {
+            this.description = post.description
+        }
+    },
 }
 </script>

@@ -62,6 +62,11 @@ export default {
                 }
             });
         }
-    }
+    },
+    watch: {
+        post: function (post) {
+            this.title = post.title
+        }
+    },
 }
 </script>

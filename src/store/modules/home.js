@@ -1,5 +1,6 @@
 import {getPostsApi, deletePostApi, addPostApi, updatePostApi} from '@/api'
 import { message } from '@/utils/message.js';
+import Vue from 'vue'
 
 const state = {
     posts: [],
@@ -59,7 +60,7 @@ const actions = {
 const mutations = {
     SET_POSTS(state, {data, currentPage}){
         const {pagination} = state
-        state.posts = data.posts
+        Vue.set(state, 'posts', data.posts)
         if(currentPage)
             state.pagination.currentPage = currentPage
         else if(pagination.currentPage > data.maxPages)
